@@ -28,95 +28,100 @@
             width: 700px;
         }
 
+        @keyframes megaZoomInOut {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(3);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
         h2 {
-            background-image: url("bg_img.jpeg");
+
             display: flex;
             justify-content: center;
             align-items: center;
+
+
+        }
+
+
+
+        h3 {
+            background-image: url(bg_img.jpeg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        [data-aos="mega-zoom"] {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        [data-aos="mega-zoom"].aos-animate {
+            animation: megaZoomInOut 4s;
+        }
+
+        h1 {
+            cursor: pointer;
+            color: white;
         }
     </style>
 </head>
 
+
+
+
+
 <body>
     <main>
-        <!DOCTYPE html>
-        <html lang="en">
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Page Title</title>
+        <section>
+            <h1 id="panic-text" class="animate__animated animate__wobble">AAAH! I'm stuck in TeamLabs!</h1>
+        </section>
 
-            <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-            <style>
-                * {
-                    margin: 0;
-                    padding: 0;
-                }
+        <!-- Second section - animation triggers here -->
 
-                section {
-                    height: 100vh;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background-image: linear-gradient(red, rgb(106, 0, 198), rgb(25, 0, 79), rgb(41, 6, 158), teal);
-                    font-size: 50px;
-                    text-align: center;
-                }
+        <h2>
 
-                img {
-                    width: 700px;
-                }
+            <h3> <img data-aos="mega-zoom" src="shoe.png" alt="shoe"></h3>
+        </h2>
+    </main>
 
-                h2 {
-                    background-image: url("bg_img.jpeg");
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
 
-                h1 {
-                    cursor: pointer;
-                }
-            </style>
-        </head>
+        const colors = ['red', 'yellow', 'lime', 'cyan', 'magenta', 'orange', 'white', 'hotpink', 'gold'];
+        const text = document.getElementById('panic-text');
+        let i = 0;
 
-        <body>
-            <main>
+        text.addEventListener('click', () => {
+            text.style.color = colors[i];
+            i++;
 
-                <section>
-                    <h1 id="panic-text" class="animate__animated animate__wobble">AAAH! I'm stuck in TeamLabs!</h1>
-                </section>
-
-                <!-- Second section - animation triggers here -->
-                <h2>
-                    <img data-aos="zoom-in" data-aos-offset="200" data-aos-delay="500" data-aos-duration="10000"
-                        data-aos-easing="ease-in" data-aos-anchor-placement="top-bottom" src="shoe.png" alt="shoe">
-                </h2>
-            </main>
-
-            <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-            <script>
-                AOS.init();
-
-                const colors = ['red', 'yellow', 'lime', 'cyan', 'magenta', 'orange', 'white', 'hotpink', 'gold'];
-                const text = document.getElementById('panic-text');
-                let i = 0;
-
-                text.addEventListener('click', () => {
-                    text.style.color = colors[i];
-                    i++;
-
-                    // Reset to beginning when we reach the end
-                    if (i >= colors.length) {
-                        i = 0;
-                    }
-                });
-            </script>
+            // Reset to beginning when we reach the end
+            if (i >= colors.length) {
+                i = 0;
+            }
+        });
 
 
-            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-        </body>
+    </script>
 
-        </html>
+
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+</body>
+
+</html>
